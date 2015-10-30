@@ -15,6 +15,12 @@
  ****************************************************/
 
 #define SD_CS    10 // Chip select line for SD card
+
+// Matrix types defined at https://learn.adafruit.com/adafruit-neopixel-uberguide/neomatrix-library
+// progressive: Row Major Progressive
+// zigzag: Row Major Zigzag (Game Frame Hardware)
+#define MATRIX_TYPE "zigzag"
+
 SdFat sd; // set filesystem
 SdFile myFile; // set filesystem
 
@@ -1173,18 +1179,22 @@ void bmpDraw(const char *filename, uint8_t x, uint8_t y) {
 byte getIndex(byte x, byte y)
 {
   byte index;
-  if (y == 0)
-  {
-    index = 15 - x;
-  }
-  else if (y % 2 != 0)
-  {
-    index = y * 16 + x;
-  }
-  else
-  {
-    index = (y * 16 + 15) - x;
-  }
+  if (MATRIX_TYPE == "progressive") {
+      index = y * 16 + x;
+  } else {
+    if (y == 0)
+    {
+      index = 15 - x;
+    }
+    else if (y % 2 != 0)
+    {
+      index = y * 16 + x;
+    }
+    else
+    {
+      index = (y * 16 + 15) - x;
+    }
+  } 
   return index;
 }
 
