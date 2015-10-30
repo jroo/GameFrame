@@ -14,7 +14,7 @@
   https://gist.github.com/endolith/2568571
  ****************************************************/
 
-#define SD_CS    9  // Chip select line for SD card
+#define SD_CS    10 // Chip select line for SD card
 SdFat sd; // set filesystem
 SdFile myFile; // set filesystem
 
@@ -999,7 +999,7 @@ void refreshImageDimensions(char *filename) {
 // makes loading a little faster.  20 pixels seems a
 // good balance.
 
-void bmpDraw(char *filename, uint8_t x, uint8_t y) {
+void bmpDraw(const char *filename, uint8_t x, uint8_t y) {
 
   int  bmpWidth, bmpHeight;   // W+H in pixels
   uint8_t  bmpDepth;              // Bit depth (currently must be 24)
