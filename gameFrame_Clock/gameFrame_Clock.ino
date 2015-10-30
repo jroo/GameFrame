@@ -14,7 +14,7 @@
   https://gist.github.com/endolith/2568571
  ****************************************************/
 
-#define SD_CS    10 // Chip select line for SD card
+#define SD_CS    9 // Chip select line for SD card
 
 // Matrix types defined at https://learn.adafruit.com/adafruit-neopixel-uberguide/neomatrix-library
 // progressive: Row Major Progressive
